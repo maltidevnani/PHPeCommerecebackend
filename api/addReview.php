@@ -1,7 +1,8 @@
 <?php
 include_once '../config/database.php';
 // required headers
-header('Content-Type: application/json');
+header('Content-Type: multipart/form-data');
+
 include_once '../object/review.php';
 
 // initialize database
