@@ -6,6 +6,7 @@ class User
     private $table_name = "customer";
 
     // object properties
+    public $cust_id;
     public $cust_name;
     public $cust_email;
     public $cust_password;
@@ -47,6 +48,29 @@ class User
             return true;
         }
         return false;
+    }
+    //get User details
+    function getUserDetails()
+    {
+        $this->cust_id = $_POST["cust_id"];
+        $query = "SELECT * FROM customer WHERE
+                cust_id = $this->cust_id ";
+        echo $query;
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+        // bind id of user 
+        $stmt->bindParam(":cust_id", $this->cust_id);
+        // execute query
+        $stmt->execute();
+        // get retrieved row
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        // set values to object properties
+        $this->cust_name = $row['cust_name'];
+        $this->cust_email = $row['cust_email'];
+        $this->cust_address = $row['cust_address'];
+        $this->cust_city = $row['cust_city'];
+        return $stmt;
+
     }
 }
 ?>
