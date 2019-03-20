@@ -14,8 +14,7 @@ $num = $stmt ->rowCount();
 if($num>0){
    // product array
    $products_arr = array();
-   $products_arr["records"] = array();
-   
+   $products_arr["products"] = array();   
    // retrieve data from database
    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
     // extract row
@@ -29,11 +28,10 @@ if($num>0){
         "product_description" => $product_description,
         "product_rating" => $product_rating,
         "product_price" => $product_price,
-        "product_quantity" => $product_quantity,
-        "product_image" => $product_image
+        "product_image" => $product_img
     );
 
-    array_push($products_arr["records"], $product_item);
+    array_push($products_arr["products"], $product_item);
 }
 
 // set response code - 200 OK

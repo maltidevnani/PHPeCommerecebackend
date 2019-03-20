@@ -14,11 +14,12 @@ $num = $stmt ->rowCount();
 if($product->product_id!=null){
     // create array
     $products_arr = array(
-        "id" =>  $product->product_id,
-        "title" => $product->product_title,
-        "description" => $product->product_description,
-        "price" => $product->product_price,
-        "image" => $product->product_image 
+        "product_id" =>  $product->product_id,
+        "product_title" => $product->product_title,
+        "product_description" => $product->product_description,
+        "product_price" => $product->product_price,
+        "product_image" => $product->product_image,
+        "product_rating"=>$product->product_rating
     ); 
     // set response code - 200 OK
     http_response_code(200); 

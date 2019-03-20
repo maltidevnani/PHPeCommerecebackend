@@ -30,7 +30,6 @@ class Product{
         $this->product_id = $_POST["productId"];
         $query = "SELECT * FROM products WHERE
                 product_id = $this->product_id ";
-        echo $query;
         // prepare query statement
         $stmt = $this->conn->prepare($query);
         // bind id of user 
@@ -44,7 +43,8 @@ class Product{
         $this->product_title = $row['product_title'];
         $this->product_price = $row['product_price'];
         $this->product_description = $row['product_description'];
-        $this->product_image = $row['product_image'];
+        $this->product_image = $row['product_img'];
+        $this->product_rating=$row['product_rating'];
         return $stmt;
 
     }
