@@ -52,19 +52,21 @@ class User
     //get User details
     function getUserDetails()
     {
-        $this->cust_id = $_POST["cust_id"];
+        $this->cust_email = $_POST["email"];
+        $this->cust_password=$_POST["password"];
         $query = "SELECT * FROM customer WHERE
-                cust_id = $this->cust_id ";
-        echo $query;
+                cust_email = '$this->cust_email' AND cust_password = '$this->cust_password' ";
         // prepare query statement
         $stmt = $this->conn->prepare($query);
         // bind id of user 
-        $stmt->bindParam(":cust_id", $this->cust_id);
+        $stmt->bindParam(":email", $this->cust_email);
+        $stmt->bindParam(":password", $this->cust_password);
         // execute query
         $stmt->execute();
         // get retrieved row
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         // set values to object properties
+        $this->cust_id = $row['cust_id'];
         $this->cust_name = $row['cust_name'];
         $this->cust_email = $row['cust_email'];
         $this->cust_address = $row['cust_address'];

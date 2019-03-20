@@ -26,8 +26,8 @@ if($user->cust_name!=null){
     echo json_encode($user_array);
 } 
 else{
-    // set response code - 404 Not found
-    http_response_code(404); 
+    // set response code - 403 Not found
+    http_response_code(403); 
     // tell the user product does not exist
     echo json_encode(array("message" => "user does not exist."));
 }
