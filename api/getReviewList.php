@@ -14,7 +14,7 @@ $num = $stmt ->rowCount();
 if($num>0){
    // product array
    $review_arr = array();
-   $review_arr["records"] = array();
+   $review_arr["reviews"] = array();
    
    // retrieve data from database
    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
@@ -30,7 +30,7 @@ if($num>0){
         "review_productId" => $review_productId
     );
 
-    array_push($review_arr["records"], $reviewData);
+    array_push($review_arr["reviews"], $reviewData);
 }
 
 // set response code - 200 OK
