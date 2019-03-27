@@ -22,14 +22,19 @@ if($num>0){
     // this will make $row['name'] to
     // just $name only
     extract($row);
+    //sending an image with URL
+    $path = getcwd();
+    $relativePath = (explode("htdocs",$path))[1];
+    $relativePath = str_replace('\\', '/', $relativePath);
+    
+    $imageUrl = "http://". $_SERVER['SERVER_ADDR']. ":" .$_SERVER['SERVER_PORT'] ."". $relativePath ."/". $review_image;
     $reviewData=array(
         "review_id" => $review_id,
         "reviewer_name" => $review_reviewer_name,
-        "review_image" => $review_image,
+        "review_image" => $imageUrl,
         "review_comment" => $review_comment,
         "review_productId" => $review_productId
     );
-
     array_push($review_arr["reviews"], $reviewData);
 }
 
