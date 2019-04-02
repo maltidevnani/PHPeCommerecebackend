@@ -22,10 +22,6 @@ class Review
     {
         $success = false;
         $message = '';
-  
-        $this->review_reviewerName = $_POST["name"];
-       // $this->review_image = $_FILES['image']['name'];
-
        if (($_FILES['image']['name']!="")){
         // Where the file is going to be stored
             $target_dir = "data/";
