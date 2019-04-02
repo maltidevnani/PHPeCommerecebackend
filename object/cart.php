@@ -41,7 +41,64 @@ class Cart
     }
 
     
-   
+    // check if product is exists
+    function isProductExists()
+    {
+        $this->fk_userid = $_POST["userId"];
+        $this->fk_productid = $_POST["productId"];
+        $this->quantity = $_POST["quantity"];
+	
+        $query = "SELECT fk_productid FROM sales WHERE fk_userid = '$this->fk_userid'";
+		
+        // prepare query
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $data  = $stmt->fetchAll();
+		
+        foreach($data as $row) {
+            if ($this->fk_productid == $row['fk_productid']) {
+                return true;
+            }
+        }
+		
+        return false;
+    }
+
+
+    //get User details
+    function updateQuantity()
+    {
+        $this->fk_userid = $_POST["userId"];
+        $this->fk_productid = $_POST["productId"];
+        $this->quantity = $_POST["quantity"];
+
+        $query = "SELECT quantity FROM sales WHERE fk_userid = '$this->fk_userid' AND fk_productid = '$this->fk_productid'";
+
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+        
+        // execute query
+        $stmt->execute();
+
+        // get retrieved row
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $num = $stmt ->rowCount();
+        
+        if ($num == 1) {
+            
+            $query = "UPDATE sales SET quantity = '$this->quantity' WHERE fk_userid = '$this->fk_userid' AND fk_productid = '$this->fk_productid'";
+            
+            $stmt = $this->conn->prepare($query);
+            if ($stmt->execute())
+            {
+                return true;
+            }
+            return false;
+        } 
+        else {
+            return false;
+        }
+    }
 	
 	function getCartProducts()
     {
