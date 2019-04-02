@@ -66,7 +66,7 @@ class User
         // get retrieved row
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         // set values to object properties
-        $this->cust_id = $row['cust_id'];
+        $this->cust_id = (int)$row['cust_id'];
         $this->cust_name = $row['cust_name'];
         $this->cust_email = $row['cust_email'];
         $this->cust_address = $row['cust_address'];
