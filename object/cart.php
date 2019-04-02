@@ -77,6 +77,22 @@ class Cart
         return $products_arr;
     }
 	
-	
+	function removeFromCart() {
+		$this->fk_userid = $_POST["userId"];
+        $this->fk_productid = $_POST["productId"];
+
+        $query = "DELETE FROM `sales` WHERE fk_userid = '$this->fk_userid' AND fk_productid = '$this->fk_productid'";
+
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+		
+		// execute query
+        if ($stmt->execute())
+        {
+            echo ("Product Removed");
+            return true;
+        }
+        return false;
+	}
 }
 ?>
