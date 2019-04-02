@@ -30,5 +30,5 @@ else{
     // set response code - 404 Not found
     http_response_code(404); 
     // tell the user product does not exist
-    echo json_encode(array("message" => "user does not exist."));
+    echo json_encode(array("message" => "product does not exist."));
 }
