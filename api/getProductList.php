@@ -21,13 +21,13 @@ if($num>0){
     // this will make $row['name'] to
     // just $name only
     extract($row);
-	
+
     $product_item=array(
-        "product_id" => (int)$product_id,
+        "product_id" => $product_id,
         "product_title" => $product_title,
         "product_description" => $product_description,
-        "product_rating" => (int)$product_rating,
-        "product_price" => (int)$product_price,
+        "product_rating" => $product_rating,
+        "product_price" => $product_price,
         "product_image" => $product_img
     );
 

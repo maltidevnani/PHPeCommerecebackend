@@ -22,8 +22,7 @@ class Product{
     $stmt = $this->conn->prepare($query); 
     // execute query
     $stmt->execute(); 
-    
-	return $stmt;
+    return $stmt;
     }
     //get product details
     function getProductDetail()
@@ -40,13 +39,12 @@ class Product{
         // get retrieved row
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         // set values to object properties
-		
-        $this->product_id = (int)$row['product_id'];
+        $this->product_id = $row['product_id'];
         $this->product_title = $row['product_title'];
-        $this->product_price = (int)$row['product_price'];
+        $this->product_price = $row['product_price'];
         $this->product_description = $row['product_description'];
         $this->product_image = $row['product_img'];
-        $this->product_rating= (int)$row['product_rating'];
+        $this->product_rating=$row['product_rating'];
         return $stmt;
 
     }
