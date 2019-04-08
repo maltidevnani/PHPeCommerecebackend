@@ -49,6 +49,29 @@ class User
         }
         return false;
     }
+	
+	function updateUser()
+    {
+		$this->cust_id = $_POST["id"];
+        $this->cust_name = $_POST["name"];
+        $this->cust_email = $_POST["email"];
+        $this->cust_password = $_POST["password"];
+        $this->cust_address = $_POST["address"];
+        $this->cust_city = $_POST["city"];
+
+        $query = "UPDATE customer SET cust_name= '$this->cust_name' ,cust_email='$this->cust_email',cust_password='$this->cust_password',cust_address='$this->cust_address',cust_city='$this->cust_city' WHERE cust_id = '$this->cust_id'";
+        
+        // prepare query
+        $stmt = $this->conn->prepare($query);
+        // bind values
+        
+        if ($stmt->execute())
+        {
+            return true;
+        }
+        return false;
+    }
+	
     //get User details
     function getUserDetails()
     {
